@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Slidefolio</title>
+    <style>
+    @font-face {
+    font-family: fontawesome;
+    src: url(font/fontawesome-webfont.woff);
+        format("-ms-word-wrap: ;word-wrap: ;");
+    }
+    </style>
+
+    <script src="./js/jquery.js"></script>
+        <script src="./js/jquery-scrolltofixed-min.js"></script>
+    <script src="./js/jquery.vegas.js"></script>
+    <script src="./js/jquery.mixitup.min.js"></script>
+            <script src="./js/jquery.validate.min.js"></script>
+            <script src="./js/script.js"></script>
+            <script src="./js/bootstrap.js"></script>
+
+<link href="css/bootstrap.css" rel="stylesheet">
+
+<link href="css/slidefolio.css" rel="stylesheet">
+
+<link href="font/font-awesome.min.css" rel="stylesheet">
+</head>
+<body><img class="vegas-background" src="./img/nature1.jpg" style="position: fixed; left: 0px; top: -455.5px; width: 1920px; height: 1281px; bottom: auto; right: auto;"><img class="vegas-background" src="./img/bw1.jpg" style="position: fixed; left: 0px; top: -455px; opacity: 0.710043; width: 1920px; height: 1280px; bottom: auto; right: auto;"><div class="vegas-overlay" style="margin: 0px; padding: 0px; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; background-image: url(&quot;./img/overlay.png&quot;);"></div>
+
+<div id="top" class="header">
+<div class="vert-text">
+<img class="img-rounded" alt="Company Logo" src="img/logo.jpg">
+<h2><em>NEW RETROWAVE.</em></h2>
+
+<br>
+<a href="#about" class="btn btn-top">Learn More</a>
+</div>
+</div>
+
+<div id="nav" style="z-index: 1000;">
+
+<nav class="navbar navbar-new" role="navigation">
+<div class="container">
+
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobilemenu">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+
+</div>
+<div class="collapse navbar-collapse" id="mobilemenu">
+<ul class="nav navbar-nav navbar-right text-center">
+<li><a href="#top"><i class="service-icon fa fa-home"></i>&nbsp;Home</a></li>
+<li><a href="#about"><i class="service-icon fa fa-info"></i>&nbsp;About</a></li>
+<li><a href="#services"><i class="service-icon fa fa-laptop"></i>&nbsp;Services</a></li>
+<li><a href="#portfolio"><i class="service-icon fa fa-camera"></i>&nbsp;Gallery</a></li>
+<li><a href="#contact"><i class="service-icon fa fa-envelope"></i>&nbsp;Registration</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+</div><div></div>
+
+<div id="about" class="about_us">
+<div class="container">
+<div class="row">
+<div class="col-md-8 col-md-offset-2 text-center">
+<h2>About</h2>
+<p class="lead">Synthwave - is a genre of electronic music influenced by 1980s film soundtracks and video games. Beginning in the mid 2000s, the genre developed from various niche communities on the Internet, reaching wider popularity in the early 2010s. Aesthetically, synthwave gives a retrofuturistic perspective, emulating 1980s science fiction, action, and horror media, sometimes compared to cyberpunk. It expresses nostalgia for 1980s culture, attempting to capture the era's atmosphere and celebrate it.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="services" class="services">
+<div class="container">
+<div class="row">
+<div class="col-md-4 col-md-offset-4 text-center">
+<h2>Our Maps</h2>
+<hr>
+</div>
+</div>
+<div class="row">
+
+
+
+<div class="col-md-4 text-center">
+<div class="service-item">
+<i class="service-icon fa fa-map-marker fa-3x"></i>
+<h3>Home</h3>
+    <iframe src="https://yandex.by/map-widget/v1/-/CBUsi0DvdD" width="300" height="400" frameborder="0"></iframe>
+</div>
+</div>
+
+<div class="col-md-4 text-center">
+<div class="service-item">
+<i class="service-icon fa fa-map-marker fa-3x"></i>
+<h3>BSUIR</h3>
+    <iframe src="https://yandex.by/map-widget/v1/-/CBUsR2STPA" width="300" height="400" frameborder="0"></iframe>
+</div>
+</div>
+
+<div class="col-md-4 text-center">
+<div class="service-item">
+<i class="service-icon fa fa-map-marker fa-3x"></i>
+<h3>Жыли Были</h3>
+    <iframe src="https://yandex.by/map-widget/v1/-/CBUsVMC3SB" width="300" height="400" frameborder="0"></iframe>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<div id="portfolio" class="portfolio">
+<div class="container">
+<div class="row push50">
+<div class="col-md-4 col-md-offset-4 text-center">
+<h2>Art.</h2>
+
+<hr>
+</div>
+</div>
+<div class="row">
+<div class="gallery">
+<ul id="Grid" class="gcontainer">
+<li class="col-md-4 col-sm-4 col-xs-12 mix " data-cat="graphics" style="display: inline-block;  opacity: 1;">
+<a data-toggle="modal" data-target="#portrait1" class="mix-cover">
+<img class="horizontal" src="img/1.jpg" alt="placeholder">
+<span class="overlay"><span class="valign"></span><span class="title">Portrait 1</span></span>
+</a>
+</li>
+<li class="col-md-4 col-sm-4 col-xs-12 mix" data-cat="graphics" style="display: inline-block;  opacity: 1;">
+<a data-toggle="modal" data-target="#portrait2" class="mix-cover">
+<img class="horizontal" src="img/2.jpg" alt="placeholder">
+<span class="overlay"><span class="valign"></span><span class="title">Portrait 2</span></span>
+</a>
+</li>
+<li class="col-md-4 col-sm-4 col-xs-12 mix " data-cat="nature" style="display: inline-block;  opacity: 1;">
+<a data-toggle="modal" data-target="#portrait3" class="mix-cover">
+<img class="horizontal" src="img/3.jpg" alt="placeholder">
+<span class="overlay"><span class="valign"></span><span class="title">Portrait3</span></span>
+</a>
+</li>
+<li class="col-md-4 col-sm-4 col-xs-12 mix " data-cat="portraits" style="display: inline-block;  opacity: 1;">
+<a data-toggle="modal" data-target="#portrait4" class="mix-cover">
+<img class="horizontal" src="img/4.jpg" alt="placeholder">
+<span class="overlay"><span class="valign"></span><span class="title">Portrait 4</span></span>
+</a>
+</li>
+<li class="col-md-4 col-sm-4 col-xs-12 mix " data-cat="portraits" style="display: inline-block;  opacity: 1;">
+<a data-toggle="modal" data-target="#portrait5" class="mix-cover">
+<img class="horizontal" src="img/5.png" alt="placeholder">
+<span class="overlay"><span class="valign"></span><span class="title">Portrait 5</span></span>
+</a>
+</li>
+<li class="col-md-4 col-sm-4 col-xs-12 mix " data-cat="portrait6" style="display: inline-block;  opacity: 1;">
+<a data-toggle="modal" data-target="#portrait6" class="mix-cover">
+<img class="horizontal" src="img/6.jpg" alt="placeholder">
+<span class="overlay"><span class="valign"></span><span class="title">Portrait6</span></span>
+</a>
+</li>
+</ul>
+
+<div class="modal fade" id="portrait1" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h4 class="modal-title text-center">Portrait 1</h4>
+</div>
+<div class="modal-body">
+<img class="thumbnail" alt="Portrait1" src="img/1.jpg">
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="portrait2" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h4 class="modal-title text-center">Portrait 2</h4>
+</div>
+<div class="modal-body">
+<img class="thumbnail" alt="Portrait1" src="img/2.jpg">
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="portrait3" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h4 class="modal-title text-center">Portrait 3</h4>
+</div>
+<div class="modal-body">
+<img class="thumbnail" alt="Portrait1" src="img/3.jpg">
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="portrait4" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h4 class="modal-title text-center">Portrait 4</h4>
+</div>
+<div class="modal-body">
+<img class="thumbnail" alt="Portrait1" src="img/4.jpg">
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="portrait5" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h4 class="modal-title text-center">Portrait 5</h4>
+</div>
+<div class="modal-body">
+<img class="thumbnail" alt="Portrait1" src="img/5.png">
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="portrait6" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h4 class="modal-title text-center">Portrait6</h4>
+</div>
+<div class="modal-body">
+<img class="thumbnail" alt="portrait6" src="img/6.jpg">
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="contact">
+<div class="container">
+<div class="row">
+<div class="col-md-4 col-md-offset-4 text-center">
+<h2>Login/Registration</h2>
+<hr>
+</div>
+
+
+
+<div class="col-md-5 col-md-offset-3">
+<form action="" id="contact-form" class="form-horizontal" novalidate="novalidate">
+<fieldset>
+<div class="form-group">
+<label class="col-sm-4 control-label" for="name">Your Name</label>
+<div class="col-sm-8">
+<input type="text" placeholder="Your Name" class="form-control" name="name" id="name">
+</div>
+</div>
+<div class="form-group">
+<label class="col-sm-4 control-label" for="email">Email Address</label>
+<div class="col-sm-8">
+<input type="text" placeholder="Enter Your Email Address" class="form-control" name="email" id="email">
+</div>
+</div>
+
+<div class="col-sm-offset-4 col-sm-8">
+<button type="submit" class="btn btn-success">Submit</button>
+<button type="reset" class="btn btn-primary">Cancel</button>
+</div>
+</fieldset>
+</form>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+
+
+<footer>
+<div class="container">
+<div class="row">
+<div class="col-md-6 col-md-offset-3 text-center">
+<h2>2017</h2>
+</div>
+</div>
+</div>
+</footer>
+
+
+
+<script>
+$.vegas('slideshow', {
+  delay:5000,
+  backgrounds:[
+     { src:'./img/backgrounds/1.png', fade:2000 },
+	 { src:'./img/backgrounds/2.jpg', fade:2000 },
+	 { src:'./img/backgrounds/3.jpg', fade:2000 },
+      { src:'./img/backgrounds/4.jpg', fade:2000 },
+      { src:'./img/backgrounds/5.jpg', fade:2000 },
+      { src:'./img/backgrounds/6.jpg', fade:2000 },
+      { src:'./img/backgrounds/7.jpg', fade:2000 },
+      { src:'./img/backgrounds/8.jpg', fade:2000 },
+      { src:'./img/backgrounds/3.jpg', fade:2000 }
+	   
+  ]
+})('overlay', {
+src:'./img/overlay.png'
+});
+
+	</script>
+
+
+<script>
+		$(function(){
+    $('#Grid').mixitup();
+      });
+    </script>
+
+
+<script>
+      $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+            || location.hostname == this.hostname) {
+
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+    </script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+        $('#nav').scrollToFixed();
+  });
+    </script>
+
+
+</body></html>
