@@ -28,19 +28,16 @@ switch ($_GET['action']) {
          $login_username =  $_POST['username'];
          $login_password = $_POST['password'];
          $query = "select Id from ".$table." where username='".$login_username."' and pass='".$login_password."';";
-        // echo $query;
-         $res = mysqli_query($link, $query) or die(mysqli_error($link));
-         while ($row = mysqli_fetch_array($res)) {
-
-         if( $row['Id'] > 0){
-         echo "ok";
-         }else
-         {
-         echo "you are not registered";
-         }
-
-         }
-
+          $res = mysqli_query($link, $query) or die(mysqli_error($link));
+        if (mysqli_fetch_array($res) !== null){
+             $row = mysqli_fetch_array($res);
+             echo 1;
+       }else
+       {
+       $query = "insert into users (username, pass) values ('".$login_username."','".$login_password."')";
+       mysqli_query($link, $query) or die(mysqli_error($link));
+       echo 2;
+       }
         break;
 
 }

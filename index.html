@@ -124,10 +124,15 @@
             data: $('#login-form').serialize(),
             success: function (data) {
                 //$('.container').html(data);
-                if (data.localeCompare("ok")){
+
+                if (data == 1){
                     alert("logged in");
                     location.href="Slidefolio.html";
+                }else if(data == 2)
+                {
+                    alert("You will be registred right now. \n Please, login again.");
                 }
+
             },
             error: function (xhr, str) {
                 alert('Возникла ошибка: ' + xhr.responseCode);
