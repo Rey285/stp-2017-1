@@ -104,49 +104,21 @@
 
 
             <div class="col-md-4 text-center">
-                <div class="service-item">
-                    <i class="service-icon fa fa-music fa-3x"></i>
-                    <h3>Perturbator</h3>
-                    <p>Perturbator — синтвейв-проект французского музыканта Джеймса Кента. Альтер-эго Кента описывается
-                        как «Наполовину человек, наполовину синтезатор». Мировую известность приобрёл после выхода игры
-                        Hotline Miami, в создании саундтрека к которой принял участие. Для музыки Perturbator характерна
-                        мрачная атмосфера и жёсткий, по сравнению с иной ретро-музыкой, ритм, что роднит данный проект с
-                        метал-группами. Вдохновение для этого проекта Кент черпает из фильмов Джона Карпентера,
-                        киберпанка (Akira, «Призрак в доспехах», «Бегущий по лезвию» и т. д.) и культуры VHS
-                        B-movie.</p>
-                    <img class="horizontal" src="img/7.png" width="300" height="400" alt="placeholder">
+                <div class="service-item item1">
+
+
                 </div>
             </div>
 
             <div class="col-md-4 text-center">
-                <div class="service-item">
-                    <i class="service-icon fa fa-music fa-3x"></i>
-                    <h3>Carpenter Brut</h3>
-                    <p>Carpenter Brut is a French electronic music artist whose real name is Franck Hueso, based in
-                        Poitiers, France. His anonymity is a deliberate artistic choice in order to place more
-                        importance on the music itself rather than the identity of the musician behind it. To date he
-                        has released three EPs, which were collected together and released together under the title
-                        Trilogy in 2015. He has also contributed original music to a variety of soundtracks. He started
-                        writing music as Carpenter Brut with the intention of mixing sounds from horror films, metal,
-                        rock, and electronic music. He has toured the United States and Europe, and in 2016 he toured
-                        the US with the Swedish heavy metal band Ghost..</p>
-                    <img class="horizontal" src="img/8.jpg" width="300" height="400" alt="placeholder">
+                <div class="service-item item2">
+
                 </div>
             </div>
 
             <div class="col-md-4 text-center">
-                <div class="service-item">
-                    <i class="service-icon fa fa-music fa-3x"></i>
-                    <h3>Power Glove</h3>
-                    <p> Power Glove are an Australian electronic music and synthwave duo from Melbourne, Victoria, named
-                        after the Nintendo Power Glove. They provided the soundtrack to the 1980s-influenced
-                        retro-futuristic video game, Far Cry 3: Blood Dragon (April 2013). The soundtrack met with
-                        critical acclaim.Power Glove were formed in Melbourne as the electronic music, synthwave duo
-                        (under pseudonyms) of Michael Biehn and Michael Dudikoff.[3] In reality, the duo consists of
-                        brothers Jarome and Joel Harmsworth.The duo's music gained widespread attention with the track
-                        "Hunters" featured in the 2011 Canadian independent film, Hobo with a Shotgun and the track
-                        "Vengeance" was used in the 2012 film, The ABCs of Death. </p>
-                    <img class="horizontal" src="img/9.jpg" width="300" height="400" alt="placeholder">
+                <div class="service-item item3">
+
                 </div>
             </div>
 
@@ -315,6 +287,28 @@
         </div>
     </div>
 </footer>
+
+<script>
+
+    function init() {
+
+        $.get('rectangle.php?name=Perturbator', function(data) {
+           $('.item1').html(data);
+        });
+        $.get('rectangle.php?name=Carpenter_Brut', function(data) {
+            $('.item2').html(data);
+        });
+        $.get('rectangle.php?name=Power_Glove', function(data) {
+            $('.item3').html(data);
+        })
+
+    }
+
+
+
+init();
+</script>
+
 
 
 <script>
