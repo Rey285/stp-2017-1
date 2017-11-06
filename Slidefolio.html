@@ -293,16 +293,6 @@
 
     function init() {
 
-      //  $.get('rectangle.php?id=1', function(data) {
-     //      $('.insert').html(data);
-      //  });
-
-     //   $.get('rectangle.php?id=2', function(data) {
-    //        $('.insert').append(data);
-    //    });
-    //    $.get('rectangle.php?id=3', function(data) {
-    //        $('.insert').append(data);
-    //   });
 
        $.get('music.php', function(data) {
             $('.music_insert').html(data);
@@ -324,6 +314,11 @@
 
        }
         baseid = nextid - 1;
+        console.log("baseid " + baseid + " nextid " + nextid);
+        if(nextid === 7){
+           // baseid = 3;
+            prev();
+        }
     }
 
     function prev() {
@@ -339,6 +334,10 @@
 
         }
         baseid = previd - 1;
+        console.log("baseid " + baseid + " previd " + previd);
+       if(previd === 1){
+           next();
+        }
     }
     init();
 </script>
