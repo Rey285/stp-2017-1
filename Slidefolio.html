@@ -26,7 +26,7 @@
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <link href="css/slidefolio.css" rel="stylesheet">
-
+    <link href="css/buttons.css" rel="stylesheet">
     <link href="font/font-awesome.min.css" rel="stylesheet">
 </head>
 <body><img class="vegas-background" src="./img/nature1.jpg"
@@ -96,31 +96,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4 text-center">
+                <a href="javascript:void(0);" onclick="prev();" class='glowBtn' >Prev</a>
+                <a href="javascript:void(0);" onclick="next();" class='glowBtn' >Next</a>
                 <h2></h2>
                 <hr>
             </div>
         </div>
-        <div class="row">
 
 
-            <div class="col-md-4 text-center">
-                <div class="service-item item1">
+        <div class="row insert">
 
-
-                </div>
-            </div>
-
-            <div class="col-md-4 text-center">
-                <div class="service-item item2">
-
-                </div>
-            </div>
-
-            <div class="col-md-4 text-center">
-                <div class="service-item item3">
-
-                </div>
-            </div>
 
         </div>
     </div>
@@ -308,26 +293,54 @@
 
     function init() {
 
-        $.get('rectangle.php?name=Perturbator', function(data) {
-           $('.item1').html(data);
-        });
-        $.get('rectangle.php?name=Carpenter_Brut', function(data) {
-            $('.item2').html(data);
-        });
-        $.get('rectangle.php?name=Power_Glove', function(data) {
-            $('.item3').html(data);
-        });
+      //  $.get('rectangle.php?id=1', function(data) {
+     //      $('.insert').html(data);
+      //  });
 
-        $.get('music.php', function(data) {
+     //   $.get('rectangle.php?id=2', function(data) {
+    //        $('.insert').append(data);
+    //    });
+    //    $.get('rectangle.php?id=3', function(data) {
+    //        $('.insert').append(data);
+    //   });
+
+       $.get('music.php', function(data) {
             $('.music_insert').html(data);
         });
-
+        next();
 
     }
 
 
+    var baseid = 0;
+    function next() {
+       $('.insert').html("");
+       var nextid = baseid + 1;
+       for (nextid; nextid <= baseid + 3; nextid++){
 
-init();
+           $.get('rectangle.php?id=' + nextid, function(data) {
+               $('.insert').append(data);
+           });
+
+       }
+        baseid = nextid - 1;
+    }
+
+    function prev() {
+
+        $('.insert').html("");
+        var previd = baseid - 5;
+
+        for (previd; previd <= baseid - 3; previd++){
+
+            $.get('rectangle.php?id=' + previd, function(data) {
+                $('.insert').append(data);
+            });
+
+        }
+        baseid = previd - 1;
+    }
+    init();
 </script>
 
 
