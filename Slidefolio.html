@@ -294,7 +294,7 @@
     function init() {
 
 
-       $.get('music.php', function(data) {
+       $.get('bd.php?action=get-players', function(data) {
             $('.music_insert').html(data);
         });
         next();
@@ -308,7 +308,7 @@
        var nextid = baseid + 1;
        for (nextid; nextid <= baseid + 3; nextid++){
 
-           $.get('rectangle.php?id=' + nextid, function(data) {
+           $.get('bd.php?action=get-rectangle&id=' + nextid, function(data) {
                $('.insert').append(data);
            });
 
@@ -328,7 +328,7 @@
 
         for (previd; previd <= baseid - 3; previd++){
 
-            $.get('rectangle.php?id=' + previd, function(data) {
+            $.get('bd.php?action=get-rectangle&id=' + previd, function(data) {
                 $('.insert').append(data);
             });
 
