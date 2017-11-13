@@ -14,7 +14,8 @@ switch ($_GET['action']) {
 case 'login':
 $login_username =  $_POST['username'];
          $login_password = $_POST['password'];
-         $query = "select Id from ".$table." where username='".$login_username."' and pass='".$login_password."';";
+         $query = "select Id from users where username='".$login_username."' and pass='".$login_password."';";
+         $table = "users";
           $res = mysqli_query($link, $query) or die(mysqli_error($link));
         if (mysqli_fetch_array($res) !== null){
              $row = mysqli_fetch_array($res);
@@ -47,17 +48,23 @@ break;
         break;
 
     case 'insert-rectangle':
-        $query = "INSERT INTO rectangle (text,name) VALUES('".$_GET['text'].",".$_GET['name']."');";
+        $query = "INSERT INTO rectangle (text,name) VALUES('".$_POST['text']."','".$_POST['name']."');";
         echo $query ;
         $res = mysqli_query($link, $query) or die(mysqli_error($link));
-        break;
-
+        echo "<h4>Created musician</h4>";
         break;
     case 'insert-players':
-        $query = "INSERT INTO players (code) VALUES('".$_GET['code']."');";
+        $query = "INSERT INTO players (code) VALUES('".$_POST['code']."');";
         echo $query ;
         $res = mysqli_query($link, $query) or die(mysqli_error($link));
+        echo "<h4>Created player</h4>";
         break;
+    case 'insert-users':
+             $query = "INSERT INTO users (username,pass) VALUES('".$_POST['username']."','".$_POST['pass']."');";
+             echo $query ;
+             $res = mysqli_query($link, $query) or die(mysqli_error($link));
+             echo "<h4>Created user</h4>";
+    break;
     case 'delete-rectangle':
         $query = "DELETE FROM rectangle WHERE Id='".$_GET['id']."'";
         echo $query ;
@@ -68,11 +75,7 @@ break;
         echo $query ;
         $res = mysqli_query($link, $query) or die(mysqli_error($link));
         break;
-    case 'insert-users':
-        $query = "INSERT INTO users (username,pass) VALUES('".$_GET['username'].",".$_GET['pass']."');";
-        echo $query ;
-        $res = mysqli_query($link, $query) or die(mysqli_error($link));
-        break;
+
     case 'delete-users':
         $query = "DELETE FROM users WHERE Id='".$_GET['id']."'";
         echo $query ;

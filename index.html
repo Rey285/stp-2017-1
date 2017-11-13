@@ -20,12 +20,23 @@
     <script src="./js/jquery.validate.min.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/bootstrap.js"></script>
-
+    <script src="./js/js.cookie.min.js"></script>
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <link href="css/slidefolio.css" rel="stylesheet">
 
     <link href="font/font-awesome.min.css" rel="stylesheet">
+<script>
+
+    function init() {
+        if (Cookies.get('logged') === "yes"){
+            alert("already logged in");
+            location.href="Slidefolio.html";
+        }
+    }
+    init();
+
+</script>
 </head>
 <body><img class="vegas-background" src="./img/nature1.jpg" style="position: fixed; left: 0px; top: -455.5px; width: 1920px; height: 1281px; bottom: auto; right: auto;"><img class="vegas-background" src="./img/bw1.jpg" style="position: fixed; left: 0px; top: -455px; opacity: 0.710043; width: 1920px; height: 1280px; bottom: auto; right: auto;"><div class="vegas-overlay" style="margin: 0px; padding: 0px; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; background-image: url(&quot;./img/overlay.png&quot;);"></div>
 
@@ -116,6 +127,8 @@
 </footer>
 
 <script>
+
+
     function call() {
 
         $.ajax({
@@ -127,6 +140,7 @@
 
                 if (data == 1){
                     alert("logged in");
+                    Cookies.set('logged', 'yes', { expires: 7 });
                     location.href="Slidefolio.html";
                 }else if(data == 2)
                 {

@@ -22,13 +22,25 @@
     <script src="./js/jquery.validate.min.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/bootstrap.js"></script>
-
+    <script src="./js/js.cookie.min.js"></script>
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <link href="css/slidefolio.css" rel="stylesheet">
     <link href="css/buttons.css" rel="stylesheet">
     <link href="font/font-awesome.min.css" rel="stylesheet">
 </head>
+<script>
+
+    function init() {
+        if (Cookies.get('logged') === "yes"){
+
+       }else {
+            location.href="error.html";
+        }
+    }
+    init();
+
+</script>
 <body><img class="vegas-background" src="./img/nature1.jpg"
            style="position: fixed; left: 0px; top: -455.5px; width: 1920px; height: 1281px; bottom: auto; right: auto;"><img
         class="vegas-background" src="./img/bw1.jpg"
