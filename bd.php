@@ -14,20 +14,29 @@ switch ($_GET['action']) {
 case 'login':
 $login_username =  $_POST['username'];
          $login_password = $_POST['password'];
-         $query = "select Id from users where username='".$login_username."' and pass='".$login_password."';";
+         $query = "select admin from users where username='".$login_username."' and pass='".$login_password."';";
          $table = "users";
           $res = mysqli_query($link, $query) or die(mysqli_error($link));
-        if (mysqli_fetch_array($res) !== null){
-             $row = mysqli_fetch_array($res);
-             echo 1;
+          $row = mysqli_fetch_array($res);
+        if ($row !== null){
+             if($row['admin'] == 1){
+               echo 3;
+             }else if($row['admin'] == 0){
+               echo 1;
+             }
        }else
        {
-       $query = "insert into users (username, pass) values ('".$login_username."','".$login_password."')";
-       mysqli_query($link, $query) or die(mysqli_error($link));
+      /// $query = "insert into users (username, pass) values ('".$login_username."','".$login_password."')";
+      // mysqli_query($link, $query) or die(mysqli_error($link));
        echo 2;
        }
 break;
-
+case 'reg':
+         $login_username =  $_POST['username'];
+         $login_password = $_POST['password'];
+         $query = "insert into users (username, pass, admin) values ('".$login_username."','".$login_password."', 0)";
+         mysqli_query($link, $query) or die(mysqli_error($link));
+break;
     case 'get-players':
 
         $query = "select code from players;";
@@ -40,10 +49,10 @@ break;
 
     case 'get-rectangle':
 
-        $query = "select text from rectangle where Id = '".$_GET['id']."';";
+        $query = "select code from rectangle where Id = '".$_GET['id']."';";
         $res = mysqli_query($link, $query) or die(mysqli_error($link));
         $row =  mysqli_fetch_array($res);
-        echo $row['text'];
+        echo $row['code'];
 
         break;
 
