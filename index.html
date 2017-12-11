@@ -134,16 +134,11 @@
                 <h2>Music</h2>
                 <div class = "music_insert">
                     <h3>Загрузка файла</h3>
-
-                    <input type="file" id = "file" >
-
+                    <input type="file" id ="file" >
                     <input type="button" value="Загрузка музыки" onclick="upload()">
-
-                    <a href="javascript:void(0);" onclick="insert_players();" class="button" id="insert_players">Создать</a>
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" placeholder="name">
-                    <label for="path">path</label>
-                    <input type="text" class="form-control" id="path" placeholder="path">
+                    <a href="javascript:void(0);" onclick="insert_players();" class="button" id="insert_players">Создать</a>
                 </div>
             </div>
         </div>
@@ -376,7 +371,7 @@
         $.ajax({
             type: 'POST',
             url: 'bd.php?action=insert-players',
-            data: { name: $('#name').val(), path:$('#path').val()},
+            data: { name: $('#name').val(), path:fileToUpload},
             success: function (data) {
                 alert('success');
 
@@ -390,6 +385,7 @@
     }
 
     var files;
+    var fileToUpload;
 
     $('input[type=file][id=file]').change(function(){
         files = this.files;
@@ -424,8 +420,8 @@
                     var files_path = respond.files;
                     var html = '';
                     $.each(files_path, function (key, val) {
+                        fileToUpload = val.substring(18);
                         html = '<br>file ok';
-                        fileToUpload = val;
                     });
                     $('.music_insert').append(html);
                 }
