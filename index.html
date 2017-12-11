@@ -133,9 +133,16 @@
             <div class="col-md-8 col-md-offset-2 text-center">
                 <h2>Music</h2>
                 <div class = "music_insert">
+                    <h3>Загрузка файла</h3>
 
+                    <input type="file" id = "file" >
 
-
+                    <input type="button" value="Загрузка музыки" onclick="upload()">
+                    <a href="javascript:void(0);" onclick="insert_players();" class="button" id="insert_players">Создать</a>
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="name">
+                    <label for="path">path</label>
+                    <input type="text" class="form-control" id="path" placeholder="path">
                 </div>
             </div>
         </div>
@@ -311,7 +318,7 @@
         if (Cookies.get('logged') === "yes") {
 
         $.get('bd.php?action=get-players', function (data) {
-            $('.music_insert').html(data);
+            $('.music_insert').append(data);
         });
         }
 
@@ -363,6 +370,23 @@
         }
     }
     init();
+
+    function insert_players(){
+        $.ajax({
+            type: 'POST',
+            url: 'bd.php?action=insert-players',
+            data: { name: $('#name').val(), path:$('#path').val()},
+            success: function (data) {
+                alert('success');
+
+            },
+            error: function (xhr, str) {
+                alert('Возникла ошибка: ' + xhr.responseCode);
+            }
+        });
+        $('#name').val("");
+        $('#path').val("");
+    }
 </script>
 
 
@@ -413,6 +437,58 @@
             }
         });
     });
+    var files;
+    var fileToUpload;
+
+    $('input[type=file][id=file]').change(function(){
+        files = this.files;
+    });
+    function upload() {
+
+// Создадим данные формы и добавим в них данные файлов из files
+        var data = new FormData();
+        $.each(files, function (key, value) {
+            data.append(key, value);
+        });
+
+// Отправляем запрос
+
+        $.ajax({
+            url: './upload.php?uploadfiles',
+            type: 'POST',
+            data: data,
+            cache: false,
+            dataType: 'json',
+            processData: false, // Не обрабатываем файлы (Don't process the files)
+            contentType: false, // Так jQuery скажет серверу что это строковой запрос
+            success: function (respond, textStatus, jqXHR) {
+
+// Если все ОК
+
+                if (typeof respond.error === 'undefined') {
+// Файлы успешно загружены, делаем что нибудь здесь
+
+// выведем пути к загруженным файлам в блок '.ajax-respond'
+
+                    var files_path = respond.files;
+                    var html = '';
+                    $.each(files_path, function (key, val) {
+                        html = '<br>file ok';
+                        fileToUpload = val;
+                    });
+                    $('.ajax-respond').append(html);
+                }
+                else {
+                    console.log('ОШИБКИ ОТВЕТА сервера: ' + respond.error);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log('ОШИБКИ AJAX запроса: ' + textStatus);
+            }
+        });
+
+
+    }
 </script>
 
 <script type="text/javascript">
