@@ -12,7 +12,7 @@ mysqli_select_db($link, $dbName) or die (mysqli_error($link));
 switch ($_GET['action']) {
 
 case 'login':
-$login_username =  $_POST['username'];
+         $login_username =  $_POST['username'];
          $login_password = $_POST['password'];
          $query = "select admin from users where username='".$login_username."' and pass='".$login_password."';";
          $table = "users";
@@ -26,8 +26,6 @@ $login_username =  $_POST['username'];
              }
        }else
        {
-      /// $query = "insert into users (username, pass) values ('".$login_username."','".$login_password."')";
-      // mysqli_query($link, $query) or die(mysqli_error($link));
        echo 2;
        }
 break;
@@ -38,6 +36,8 @@ case 'reg':
          mysqli_query($link, $query) or die(mysqli_error($link));
 break;
     case 'get-players':
+
+        echo '  <h3>Загрузка файла</h3> <input type="file" id="file" class="col-md-offset-4"><br><input type="button" value="Загрузка музыки" onclick="upload()"><br><br><br><label for="name">Name</label><br><input type="text" class="form-control" id="name" placeholder="name"><br><a href="javascript:void(0);" onclick="insert_players();" class="glowBtn" id="insert_players">Создать</a><br>';
 
         $query = "select code from players;";
         $res = mysqli_query($link, $query) or die(mysqli_error($link));

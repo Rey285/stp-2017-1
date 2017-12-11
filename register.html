@@ -108,6 +108,9 @@
                 </form>
             </div>
 
+
+
+
         </div>
     </div>
 </div>
@@ -127,27 +130,19 @@
 
 
     function call() {
-         var username = $('#username').val();
-         var password = $('#password').val();
+        var username = $('#username').val();
+        var password = $('#password').val();
         $.ajax({
             type: 'POST',
-            url: 'bd.php?action=login',
+            url: 'bd.php?action=reg',
             data:  { username: username , password: md5(password)  },
             success: function (data) {
                 //$('.container').html(data);
-                if (data == 1){
-                    alert("logged in");
+
                     Cookies.set('logged', 'yes', { expires: 7 });
+                    alert("You will be registred right now");
                     location.href="index.html";
-                }else if(data == 2)
-                {
-                    alert("Incorrect login/pass");
-                }else if(data == 3){
-                    alert("hello admin");
-                    Cookies.set('logged', 'yes', { expires: 7 });
-                    Cookies.set('admin', 'yes', { expires: 7 });
-                    location.href="index.html";
-                }
+
 
             },
             error: function (xhr, str) {
