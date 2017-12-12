@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Admin panel</title>
+	<title>Admin</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	
@@ -10,9 +10,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
 
-
-	<link rel="stylesheet" href="css/libs.min.css">
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/admin.css">
 	<script src="https://use.fontawesome.com/f2209b213b.js"></script>
 	<script src="./js/js.cookie.min.js"></script>
 </head>
@@ -20,27 +18,11 @@
 
 <body>
 
-
-<script>
-
-    function init() {
-        if (Cookies.get('admin') === "yes"){
-
-        }else {
-            location.href="error.html";
-        }
-    }
-    init();
-
-</script>
-
-<div class="container" id="table1">
+	<div class="container" id="table1">
 
 
 
-
-
-</div>
+	</div>
 
 	<div class="container buttons1">
 		<div class="row text-center">
@@ -73,11 +55,13 @@
 	</div>
 
 
-<div class="container" id="table2">
+	<div class="container" id="table2">
 
-</div>
 
-		<div class="container buttons2">
+
+	</div>
+
+	<div class="container buttons2">
 		<div class="row text-center">
 
 			<div class="col-sm-3">
@@ -96,7 +80,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-sm-3"></div>
+
 			<div class="col-sm-3">
 				<a href="javascript:void(0);" onclick="insert_players();" class="button" id="insert_players">Создать</a>
 			</div>
@@ -108,11 +92,12 @@
 		</div>
 	</div>
 
-<div class="container" id="table3">
+	<div class="container" id="table3">
 
-</div>
 
-		<div class="container table10">
+	</div>
+
+	<div class="container table10">
 		<div class="row text-center">
 
 			<div class="col-sm-3">
@@ -139,199 +124,200 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-sm-3">
-				<a href="javascript:void(0);" onclick="insert_rectangle();" class="button" id="insert_reviews">Создать</a>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3">
+						<a href="javascript:void(0);" onclick="insert_rectangle();" class="button" id="insert_reviews">Создать</a>
+					</div>
+					<div class="col-sm-3">
+						<a href="javascript:void(0);" onclick="delete_rectangle();" class="button" id="delete_reviews">Удалить</a>
+					</div>
+				</div>
 			</div>
-			<div class="col-sm-3">
-				<a href="javascript:void(0);" onclick="delete_rectangle();" class="button" id="delete_reviews">Удалить</a>
-			</div>
+
 
 
 		</div>
 	</div>
 
+	<script src="js/libs.min.js"></script>
+	<script src="js/jquery.js"></script>
+	<script>
+
+        function insert_user(){
+            $.ajax({
+                type: 'POST',
+                url: 'bd.php?action=insert-user',
+                data: { username:  $('#username').val(), pass:  $('#password').val()},
+                success: function (data) {
+                    alert('success');
+
+                },
+                error: function (xhr, str) {
+                    alert('Возникла ошибка: ' + xhr.responseCode);
+                }
+            });
+            $('#username').val("");
+            $('#password').val("");
+            init();
+        }
+        function update_user(obj) {
+            //obj.id
+            $.ajax({
+                type: 'POST',
+                url: 'bd.php?action=update-user',
+                data: { username:  $('#input_username_'+obj.id).val(), pass:  $('#input_pass_'+obj.id).val(),id: obj.id },
+                success: function (data) {
+                    alert('success');
+
+                },
+                error: function (xhr, str) {
+                    alert('Возникла ошибка: ' + xhr.responseCode);
+                }
+            });
+            init();
+
+        }
+        function delete_user() {
+            $.ajax({
+                type: 'POST',
+                url: 'bd.php?action=delete-user',
+                data: { username:  $('#username').val()},
+                success: function (data) {
+                    alert('success');
+
+                },
+                error: function (xhr, str) {
+                    alert('Возникла ошибка: ' + xhr.responseCode);
+                }
+            });
+            $('#username').val("");
+            $('#password').val("");
+            init();
+        }
+
+        function insert_players(){
+            $.ajax({
+                type: 'POST',
+                url: 'bd.php?action=insert-players',
+                data: { name:  $('#name').val(), path:$('#path').val()},
+                success: function (data) {
+                    alert('success');
+
+                },
+                error: function (xhr, str) {
+                    alert('Возникла ошибка: ' + xhr.responseCode);
+                }
+            });
+            $('#name').val("");
+            $('#path').val("");
+            init();
+        }
+
+        function update_players(obj){
+
+            $.ajax({
+                type: 'POST',
+                url: 'bd.php?action=update-players',
+                data: { name:  $('#input_name_'+obj.id).val(),path:$('#input_path_'+obj.id).val(),id: obj.id },
+                success: function (data) {
+                    alert('success');
+
+                },
+                error: function (xhr, str) {
+                    alert('Возникла ошибка: ' + xhr.responseCode);
+                }
+            });
+            init();
+
+        }
+        function delete_players() {
+            $.ajax({
+                type: 'POST',
+                url: 'bd.php?action=delete-players',
+                data: { name:  $('#name').val(), path:$('#path').val()},
+                success: function (data) {
+                    alert('success');
+
+                },
+                error: function (xhr, str) {
+                    alert('Возникла ошибка: ' + xhr.responseCode);
+                }
+            });
+            $('#name').val("");
+            $('#path').val("");
+            init();
+        }
 
 
+        function insert_rectangle(){
+            $.ajax({
+                type: 'POST',
+                url: 'bd.php?action=insert-rectangle',
+                data: { name:  $('#name_rectangle').val(), text:$('#text').val(), image_path:$('#image_path').val() },
+                success: function (data) {
+                    alert('success');
 
-		<script src="js/libs.min.js"></script>
-		<script src="js/jquery.js"></script>
-<script>
+                },
+                error: function (xhr, str) {
+                    alert('Возникла ошибка: ' + xhr.responseCode);
+                }
+            });
+            $('#name').val("");
+            $('#image_path').val("");
+            $('#text').val("");
+            init();
+        }
+        function update_rectangle(obj) {
+            //obj.id//
+            $.ajax({
+                type: 'POST',
+                url: 'bd.php?action=update-rectangle',
+                data: { name:  $('#input_name_rectangle_'+obj.id).val(), text:  $('#input_text_'+obj.id).val(), image_path:  $('#input_image_path_'+obj.id).val(), id: obj.id },
+                success: function (data) {
+                    alert('success');
+                },
+                error: function (xhr, str) {
+                    alert('Возникла ошибка: ' + xhr.responseCode);
+                }
+            });
+            init();
+        }
+        function delete_rectangle() {
+            $.ajax({
+                type: 'POST',
+                url: 'bd.php?action=delete-rectangle',
+                data: { name:   $('#name_rectangle').val()},
+                success: function (data) {
+                    alert('success');
 
-	function insert_user(){
-        $.ajax({
-            type: 'POST',
-            url: 'bd.php?action=insert-user',
-            data: { username:  $('#username').val(), pass:  $('#password').val()},
-            success: function (data) {
-                alert('success');
+                },
+                error: function (xhr, str) {
+                    alert('Возникла ошибка: ' + xhr.responseCode);
+                }
+            });
+            $('#name_rectangle').val("");
+            $('#date').val("");
+            $('#text').val("");
+            init();
+        }
 
-            },
-            error: function (xhr, str) {
-                alert('Возникла ошибка: ' + xhr.responseCode);
-            }
-        });
-        $('#username').val("");
-        $('#password').val("");
+
+        function init() {
+
+            $.get('bd.php?action=get-admin-users', function(data) {
+                $('#table1').html(data);
+            });
+            $.get('bd.php?action=get-admin-players', function(data) {
+                $('#table2').html(data);
+            });
+            $.get('bd.php?action=get-admin-rectangle', function(data) {
+                $('#table3').html(data);
+            });
+
+        }
         init();
-	}
-   function update_user(obj) {
-       //obj.id
-       $.ajax({
-           type: 'POST',
-           url: 'bd.php?action=update-user',
-           data: { username:  $('#input_username_'+obj.id).val(), pass:  $('#input_pass_'+obj.id).val(),id: obj.id },
-           success: function (data) {
-               alert('success');
-
-           },
-           error: function (xhr, str) {
-               alert('Возникла ошибка: ' + xhr.responseCode);
-           }
-       });
-       init();
-
-   }
-	function delete_user() {
-        $.ajax({
-            type: 'POST',
-            url: 'bd.php?action=delete-user',
-            data: { username:  $('#username').val()},
-            success: function (data) {
-                alert('success');
-
-            },
-            error: function (xhr, str) {
-                alert('Возникла ошибка: ' + xhr.responseCode);
-            }
-        });
-        $('#username').val("");
-        $('#password').val("");
-        init();
-    }
-
-    function insert_players(){
-        $.ajax({
-            type: 'POST',
-            url: 'bd.php?action=insert-players',
-            data: { name:  $('#name').val(), path:$('#path').val()},
-            success: function (data) {
-                alert('success');
-
-            },
-            error: function (xhr, str) {
-                alert('Возникла ошибка: ' + xhr.responseCode);
-            }
-        });
-        $('#name').val("");
-        $('#path').val("");
-        init();
-    }
-
-    function update_players(obj){
-
-        $.ajax({
-            type: 'POST',
-            url: 'bd.php?action=update-players',
-            data: { name:  $('#input_name_'+obj.id).val(),path:$('#input_path_'+obj.id).val(),id: obj.id },
-            success: function (data) {
-                alert('success');
-
-            },
-            error: function (xhr, str) {
-                alert('Возникла ошибка: ' + xhr.responseCode);
-            }
-        });
-        init();
-
-	}
-    function delete_players() {
-        $.ajax({
-            type: 'POST',
-            url: 'bd.php?action=delete-players',
-            data: { name:  $('#name').val(), path:$('#path').val()},
-            success: function (data) {
-                alert('success');
-
-            },
-            error: function (xhr, str) {
-                alert('Возникла ошибка: ' + xhr.responseCode);
-            }
-        });
-        $('#name').val("");
-        $('#path').val("");
-        init();
-    }
-
-
-    function insert_rectangle(){
-        $.ajax({
-            type: 'POST',
-            url: 'bd.php?action=insert-rectangle',
-            data: { name:  $('#name_rectangle').val(), text:$('#text').val(), image_path:$('#image_path').val() },
-            success: function (data) {
-                alert('success');
-
-            },
-            error: function (xhr, str) {
-                alert('Возникла ошибка: ' + xhr.responseCode);
-            }
-        });
-        $('#name').val("");
-        $('#image_path').val("");
-        $('#text').val("");
-        init();
-    }
-    function update_rectangle(obj) {
-        //obj.id//
-        $.ajax({
-            type: 'POST',
-            url: 'bd.php?action=update-rectangle',
-            data: { name:  $('#input_name_rectangle_'+obj.id).val(), text:  $('#input_text_'+obj.id).val(), image_path:  $('#input_image_path_'+obj.id).val(), id: obj.id },
-            success: function (data) {
-                alert('success');
-            },
-            error: function (xhr, str) {
-                alert('Возникла ошибка: ' + xhr.responseCode);
-            }
-        });
-        init();
-    }
-    function delete_rectangle() {
-        $.ajax({
-            type: 'POST',
-            url: 'bd.php?action=delete-rectangle',
-            data: { name:   $('#name_rectangle').val()},
-            success: function (data) {
-                alert('success');
-
-            },
-            error: function (xhr, str) {
-                alert('Возникла ошибка: ' + xhr.responseCode);
-            }
-        });
-        $('#name_rectangle').val("");
-        $('#date').val("");
-        $('#text').val("");
-        init();
-    }
-
-
-    function init() {
-
-        $.get('bd.php?action=get-admin-users', function(data) {
-            $('#table1').html(data);
-        });
-        $.get('bd.php?action=get-admin-players', function(data) {
-            $('#table2').html(data);
-        });
-        $.get('bd.php?action=get-admin-rectangle', function(data) {
-           $('#table3').html(data);
-        });
-
-    }
-    init();
-</script>
-
-
-	</body>
-	</html>
+	</script>
+</body>
+</html>
