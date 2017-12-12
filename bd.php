@@ -65,7 +65,7 @@ break;
 
         $query = "SELECT * FROM users";
         $res = mysqli_query($link, $query) or die(mysqli_error($link));
-        echo '<table id="firstTable1"><thead><tr><th>ID</th><th>username</th><th>password</th><th>Button</th></tr></thead>';
+        echo '<table id="firstTable1" class="table"><thead><tr><th>ID</th><th>username</th><th>password</th><th>Button</th></tr></thead>';
         echo '<tbody>';
 
         while ($row = mysqli_fetch_array($res)) {
@@ -98,7 +98,7 @@ break;
 
                  $query = "SELECT * FROM rectangle";
                  $res = mysqli_query($link, $query) or die(mysqli_error($link));
-                 echo '<table id="firstTable2" ><thead><tr><th>ID</th><th>name</th><th>text</th><th>image_path</th><th>Button</th></tr></thead>';
+                 echo '<table id="firstTable2" class="table" ><thead><tr><th>ID</th><th>name</th><th>text</th><th>image_path</th><th>Button</th></tr></thead>';
                  echo '<tbody>';
 
                  while ($row = mysqli_fetch_array($res)) {
@@ -137,7 +137,7 @@ break;
 
               $query = "SELECT * FROM players";
               $res = mysqli_query($link, $query) or die(mysqli_error($link));
-              echo '<table id="firstTable3" ><thead><tr><th>ID</th><th>name</th><th>path</th><th>Button</th></tr></thead>';
+              echo '<table id="firstTable3" class="table"><thead><tr><th>ID</th><th>name</th><th>path</th><th>Button</th></tr></thead>';
               echo '<tbody>';
 
               while ($row = mysqli_fetch_array($res)) {
